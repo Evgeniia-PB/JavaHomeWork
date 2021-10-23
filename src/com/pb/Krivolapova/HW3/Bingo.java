@@ -1,4 +1,4 @@
-package com.pb.Krivolapova;
+package com.pb.Krivolapova.HW3;
 
 import java.util.Objects;
 import java.util.Scanner;
