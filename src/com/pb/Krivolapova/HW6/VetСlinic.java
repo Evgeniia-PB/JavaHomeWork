@@ -1,41 +1,41 @@
 package com.pb.Krivolapova.HW6;
-import com.pb.Krivolapova.HW5.Reader;
-
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 
 public class VetСlinic {
-    public static void main(String[] args) {
-        Dog dog = new Dog("Собака", "Барон", true, false, false, "");
-        Cat cat = new Cat("Макс", "Кот", true, true, true, "");
-        Horse horse = new Horse("Елена", "Лошадь", true, true, false, "");
-        Dog[] dogs = {dog};
-        Cat[] cats = {cat};
-        Horse[] horses = {horse};
+    public static void main(String[] args) throws Exception {
+        Cat cat = new Cat("Мурчик", "сиамский");
+        cat.setFood("Молоко и рыба");
+        cat.setLocation("Дом");
 
-        System.out.println(Animal.Sleep(dogs));
-        System.out.println(Animal.MakeNoise(dogs));
-        System.out.println(Animal.Eat(dogs));
+        Horse horse = new Horse("Плотва", "коричневый");
+        horse.setFood("Овес и яблоки");
+        horse.setLocation("Задний двор");
 
-        System.out.println(Animal.Sleep(cats));
-        System.out.println(Animal.MakeNoise(cats));
-        System.out.println(Animal.Eat(cats));
+        Dog dog = new Dog("Барон", "средняя");
+        dog.setFood("Мясо");
+        dog.setLocation("Квартира");
 
-        System.out.println(Animal.Sleep(horses));
-        System.out.println(Animal.MakeNoise(horses));
-        System.out.println(Animal.Eat(horses));
+        Class clazzCat = Cat.class;
+        Class clazzHorse = Horse.class;
+        Class clazzDog = Dog.class;
 
-        Animal animal1 = new Animal("рыба","дом","кот","здоров");
-        Animal animal2 = new Animal("мясо","будка","собака","не здоров");
-        Animal animal3 = new Animal("трава","хлев","лошадь","не здоров");
-        Animal[] animals = {animal1,animal2,animal3};
-        Health(animals);
+        Animal[] animals = new Animal[] {cat, horse, dog};
+
+        Class clazz = Class.forName("com.pb.Krivolapova.HW6.Veterinarian");
+
+        Constructor constr = clazz.getConstructor(String.class);
+        Object vet = constr.newInstance("Док");
+
+        Method treatAnimal = clazz.getMethod("treatAnimal", Animal.class);
+
+        for(Animal animal: animals) {
+            treatAnimal.invoke(vet, animal);
         }
 
-    public static void Health(Animal[] animals) {
-        for (Animal animal : animals) {
-            if (animal.health == "не здоров"){
-                System.out.println("Животному "+ animal.getType() + " нужно обратиться к врачу");
-            }
-        }
+        Class catClazz = Cat.class;
+        Class horseClazz = Horse.class;
+        Class dogClazz = Dog.class;
+
     }
 }
-
