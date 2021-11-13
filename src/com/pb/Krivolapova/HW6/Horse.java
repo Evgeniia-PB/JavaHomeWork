@@ -1,5 +1,4 @@
 package com.pb.Krivolapova.HW6;
-
 import java.util.Objects;
 
 public class Horse extends Animal {

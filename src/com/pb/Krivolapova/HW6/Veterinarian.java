@@ -1,6 +1,5 @@
 package com.pb.Krivolapova.HW6;
 
-
 public class Veterinarian {
 
     private String name;

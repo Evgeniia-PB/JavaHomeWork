@@ -2,6 +2,7 @@ package com.pb.Krivolapova.HW6;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
+
 public class VetСlinic {
     public static void main(String[] args) throws Exception {
         Cat cat = new Cat("Мурчик", "сиамский");

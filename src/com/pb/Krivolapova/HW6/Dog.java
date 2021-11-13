@@ -2,7 +2,6 @@ package com.pb.Krivolapova.HW6;
 import java.util.Objects;
 
 public class Dog extends Animal {
-
     private String size;
 
     public Dog(String name, String size) {
