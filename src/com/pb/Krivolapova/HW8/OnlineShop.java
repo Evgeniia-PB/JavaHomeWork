@@ -27,8 +27,17 @@ public class OnlineShop extends Auth{
         passwordReg = new String(scanner.nextLine());
         System.out.println("Повторите пароль:");
         confpassword = new String(scanner.nextLine());
-        signUp(loginReg, passwordReg,confpassword);
+        try {
+            signUp(loginReg, passwordReg,confpassword);
+        }
+        catch (WrongLoginException detaillog) {
+            System.out.println(detaillog);
+        }
+        catch (WrongPasswordException detailpass) {
+            System.out.println(detailpass);
+        }
         User = new Auth(loginReg,passwordReg);
+
         System.out.println("Вы хотите авторизироваться?(0-нет)");
         if (scanner.nextLine().equals("0")){
             System.exit(0);
@@ -38,6 +47,14 @@ public class OnlineShop extends Auth{
         loginIn = new String(scanner.nextLine());
         System.out.println("Введите пароль:");
         passwordIn = new String(scanner.nextLine());
-        SignIn(loginIn,passwordIn,User);
+        try{
+            SignIn(loginIn,passwordIn,User);
+        }
+        catch (WrongLoginException detaillog) {
+            System.out.println(detaillog);
+        }
+        catch (WrongPasswordException detailpass){
+            System.out.println(detailpass);
+        }
     }
 }
